@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tidutansnus</title>
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/moment@2.18.1/moment.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100vh;
+            margin: 0;
+        }
+        .wrapper {
+            background-color: rgba(14, 18, 31, 0.97);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00F597
+        }
+        text {
+            font-family: 'Abril Fatface', cursive;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="wrapper">
+        <div class="time">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="400">
+				<defs>
+					<linearGradient id = "filler" x = "0%" y = "100%">
+						<stop stop-color = "#00F597" offset = "0%"/>
+						<stop stop-color = "#00F7FF" offset = "100%"/>
+					</linearGradient>
+				</defs>
+				<text x="100" y="50%" font-size="75" text-anchor="start" fill="url(#filler)">
+                    {{ formatted }}
+                </text>
+			</svg>
+        </div>
+    </div>
+
+    <script>
+    new Vue({
+        el: '#app',
+        data: {
+            starttime: '1506196927792',
+            timenow: null
+        },
+        mounted () {
+            this.timer();
+        },
+        methods: {
+            timer() {
+                this.timenow = Date.now();
+                setTimeout(() => this.timer(), 1);
+            }
+        },
+        computed: {
+            timesince() {
+                return Math.floor(((this.timenow - this.starttime))/1000);
+            },
+            formatted() {
+                return secondstotime(this.timesince)
+            }
+        }
+    })
+    function secondstotime(secs) {
+        var t = new Date(1970,0,1); t.setSeconds(secs); var s = t.toTimeString().substr(0,8);
+        if(secs > 86399) { s = Math.floor((t - Date.parse("1/1/70")) / 3600000) + s.substr(2); }
+        return s;
+    }
+    </script>
+</body>
+</html>
