@@ -6,20 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tidutansnus</title>
     <script src="https://unpkg.com/vue@2.4.4/dist/vue.min.js"></script>
-    <script src="https://unpkg.com/moment@2.18.1/moment.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <style>
         body, html {
             height: 100vh;
             margin: 0;
+            background-color: rgba(14, 18, 31, 0.97);
         }
         .wrapper {
-            background-color: rgba(14, 18, 31, 0.97);
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #00F597
         }
         text {
             font-family: 'Abril Fatface', cursive;
@@ -56,7 +54,7 @@
         methods: {
             timer() {
                 this.timenow = Date.now();
-                setTimeout(() => this.timer(), 1);
+                setTimeout(() => this.timer(), 1000);
             }
         },
         computed: {
