@@ -71,10 +71,10 @@
         },
         computed: {
             timestart() {
-                return moment(this.starttime).format('DDMMYY.HH:mm');
+                return moment(this.starttime).format('DDMMYY@HH:mm');
             },
             timeend() {
-                return moment(this.startend).format('DDMMYY.HH:mm');
+                return moment(this.startend).format('DDMMYY@HH:mm');
             },
             timesince() {
                 return Math.floor((this.timenow - this.starttime)/1000);
