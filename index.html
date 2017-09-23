@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/vue@2.4.4/dist/vue.min.js"></script>
     <script src="https://unpkg.com/moment@2.18.1/moment.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <style>
         body, html {
             height: 100vh;
@@ -19,11 +20,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #242E47;
+            color: #D5E259;
         }
-        text {
-            font-family: 'Abril Fatface', cursive;
-        }
+        text.time { font-family: 'Abril Fatface', cursive; }
+        text { font-family: 'Oswald', sans-serif; }
     </style>
 </head>
 <body>
@@ -36,16 +36,16 @@
 						<stop stop-color = "#00F7FF" offset = "100%"/>
 					</linearGradient>
                 </defs>
-                <text x="110" y="35%" font-size="20" text-anchor="start" fill="yellow">
+                <text x="110" y="36%" font-size="15" text-anchor="start" fill="#D5E259">
                     TID UTAN SNUS
                 </text>
-				<text x="100" y="50%" font-size="75" text-anchor="start" fill="url(#filler)">
+				<text class="time" x="100" y="50%" font-size="75" text-anchor="start" fill="url(#filler)">
                     {{ formatted }}
                 </text>
-                <text x="110" y="55%" font-size="20" text-anchor="start" fill="#242E47">
+                <text x="110" y="54%" font-size="15" text-anchor="start" fill="#242E47">
                     > {{ timestart }}
                 </text>
-                <text v-if="enddate" x="110" y="60%" font-size="20" text-anchor="start" fill="#242E47">
+                <text v-if="enddate" x="110" y="58%" font-size="15" text-anchor="start" fill="#242E47">
                     < {{ timeend }} 
                 </text>
 			</svg>
