@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>tidutansnus</title>
     <script src="https://unpkg.com/vue@2.4.4/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/moment@2.18.1/moment.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <style>
         body, html {
@@ -18,6 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #242E47;
         }
         text {
             font-family: 'Abril Fatface', cursive;
@@ -34,11 +36,17 @@
 						<stop stop-color = "#00F7FF" offset = "100%"/>
 					</linearGradient>
                 </defs>
-                <text x="110" y="36%" font-size="20" text-anchor="start" fill="yellow">
+                <text x="110" y="35%" font-size="20" text-anchor="start" fill="yellow">
                     TID UTAN SNUS
                 </text>
 				<text x="100" y="50%" font-size="75" text-anchor="start" fill="url(#filler)">
                     {{ formatted }}
+                </text>
+                <text x="110" y="55%" font-size="20" text-anchor="start" fill="#242E47">
+                    > {{ timestart }}
+                </text>
+                <text v-if="enddate" x="110" y="60%" font-size="20" text-anchor="start" fill="#242E47">
+                    < {{ timeend }} 
                 </text>
 			</svg>
         </div>
@@ -48,8 +56,9 @@
     new Vue({
         el: '#app',
         data: {
-            starttime: '1506196927792',
-            timenow: null
+            starttime: 1506196927792,
+            timenow: null,
+            enddate: null
         },
         mounted () {
             this.timer();
@@ -61,8 +70,14 @@
             }
         },
         computed: {
+            timestart() {
+                return moment(this.starttime).format('DDMMYY.HH:mm');
+            },
+            timeend() {
+                return moment(this.startend).format('DDMMYY.HH:mm');
+            },
             timesince() {
-                return Math.floor(((this.timenow - this.starttime))/1000);
+                return Math.floor((this.timenow - this.starttime)/1000);
             },
             formatted() {
                 return secondstotime(this.timesince)
