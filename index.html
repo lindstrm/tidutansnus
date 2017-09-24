@@ -77,7 +77,7 @@
                 return moment(this.startend).format('DDMMYY@HH:mm');
             },
             timesince() {
-                return Math.floor((this.timenow - this.starttime)/1000);
+                return Math.floor((this.timenow - this.starttime) / 1000);
             },
             formatted() {
                 return secondstotime(this.timesince)
