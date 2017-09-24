@@ -36,17 +36,18 @@
 						<stop stop-color = "#00F7FF" offset = "100%"/>
 					</linearGradient>
                 </defs>
-                <text x="110" y="36%" font-size="15" text-anchor="start" fill="#D5E259">
+                <rect x="75" y="29%" width="330" height="100" style="fill:#080B16;" />
+                <text x="100" y="35%" font-size="15" text-anchor="start" fill="#D5E259">
                     TID UTAN SNUS
+                </text>
+                <text x="187" y="35%" font-size="16" text-anchor="start" fill="#242E47">
+                    {{ timestart }}
                 </text>
 				<text class="time" x="100" y="50%" font-size="75" text-anchor="start" fill="url(#filler)">
                     {{ formatted }}
                 </text>
-                <text x="110" y="54%" font-size="15" text-anchor="start" fill="#242E47">
-                    > {{ timestart }}
-                </text>
-                <text v-if="enddate" x="110" y="58%" font-size="15" text-anchor="start" fill="#242E47">
-                    < {{ timeend }} 
+                <text v-if="enddate" x="282" y="35%" font-size="16" text-anchor="start" fill="#242E47">
+                   - {{ timeend }} 
                 </text>
 			</svg>
         </div>
@@ -58,14 +59,14 @@
         data: {
             starttime: 1506208040107,
             timenow: null,
-            enddate: null
+            enddate: 1506249985600
         },
         mounted () {
             this.timer();
         },
         methods: {
             timer() {
-                this.timenow = Date.now();
+                this.timenow = this.enddate || Date.now();
                 setTimeout(() => this.timer(), 1000);
             }
         },
